@@ -410,6 +410,7 @@ chaincodeInvoke () {
 			>&log.txt
 	fi
 	rc=$?
+        cat log.txt
 	[ $rc -ne 0 ] && cat log.txt
 	verifyResult $rc "Invoke execution on peer$peer failed "
 	echo "=== Invoke transaction on peer$peer in channel ${channel} is successful === "
@@ -438,9 +439,10 @@ chaincodeQuery () {
 			 -c "${args}" \
 			 >&log.txt
 		 rc=$?
-		 if [ $# -gt 5 ]; then # need to check the result
+		cat log.txt 
+		if [ $# -gt 5 ]; then # need to check the result
 			 test $? -eq 0 && VALUE=$(cat log.txt | awk '/Query Result/ {print $NF}')
-			 if [ "$VALUE" = "${expected_result}" ]; then
+			 if [ $VALUE = $expected_result ]; then
 				 let rc=0
 			 else
 				 let rc=1
