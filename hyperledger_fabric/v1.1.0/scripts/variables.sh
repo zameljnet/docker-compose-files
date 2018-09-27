@@ -56,15 +56,23 @@ CC_MAP_UPGRADE_ARGS='{"Args":["upgrade",""]}'
 CC_MAP_INVOKE_ARGS='{"Args":["invoke","put","key","value"]}'
 CC_MAP_QUERY_ARGS='{"Args":["get","key"]}'
 
+# Chaincode marbles v4
+CC_02_backup_NAME="marbles"
+CC_02_backup_PATH="examples/chaincode/go/chaincode_example02_backup"
+CC_02_backup_INIT_ARGS='{"Args":["init","a","100","b","200"]}'
+CC_02_backup_UPGRADE_ARGS='{"Args":["upgrade","a","100","b","200"]}'
+CC_02_backup_INVOKE_ARGS='{"Args":["invoke","a","b","10"]}'
+CC_02_backup_QUERY_ARGS='{"Args":["query","a"]}'
+
 # unique chaincode params
-CC_NAME=${CC_02_NAME}
-CC_PATH=${CC_02_PATH}
-CC_INIT_ARGS=${CC_02_INIT_ARGS}
-CC_INIT_VERSION=1.0
-CC_UPGRADE_ARGS=${CC_02_UPGRADE_ARGS}
+CC_NAME=${CC_02_backup_NAME}
+CC_PATH=${CC_02_backup_PATH}
+CC_INIT_ARGS=${CC_02_backup_INIT_ARGS}
+CC_INIT_VERSION=v4
+CC_UPGRADE_ARGS=${CC_02_backup_UPGRADE_ARGS}
 CC_UPGRADE_VERSION=1.1
-CC_INVOKE_ARGS=${CC_02_INVOKE_ARGS}
-CC_QUERY_ARGS=${CC_02_QUERY_ARGS}
+CC_INVOKE_ARGS=${CC_02_backup_INVOKE_ARGS}
+CC_QUERY_ARGS=${CC_02_backup_QUERY_ARGS}
 
 # Generate configs
 GEN_IMG=yeasy/hyperledger-fabric:1.1.0  # working dir is `/go/src/github.com/hyperledger/fabric`
